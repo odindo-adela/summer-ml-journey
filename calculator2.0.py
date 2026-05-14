@@ -21,6 +21,15 @@ def calculator(num1,operator,num2):
 
     return result
 
+operations = {
+    "+":"Addition",
+    "-":"Subtraction",
+    "/":"Division",
+    "*":"Multiplication"
+}
+
+history_list=[]
+
 while True:
     print("\nCalculation Menu:")
     print("Option 1. Calculate")
@@ -29,14 +38,29 @@ while True:
     choice= input("Choose an option(1, 2 or 3):")
 
     if choice=="1":
-        num1 = float(input("Enter first number: "))
+        try:
+            num1 = float(input("Enter first number: "))
+        except ValueError:
+            print("Invalid! Please enter a number.")
+            continue
+
         operator = input("Choose your operation(+,-,/,*): ")
-        num2 = float(input("Enter second number: "))
+
+        try:
+            num2 = float(input("Enter second number: "))
+        except ValueError:
+            print("Invalid!Please enter a number.")
+            continue
+
         result = calculator(num1, operator,num2)
         
         if isinstance(result, (int,float)):
             with open("history.txt", "a") as file:
                 file.write(f"{num1} {operator} {num2} = {result}\n")
+                
+            history_list.append(f"{num1} {operator} {num2} = {result}")
+            for item in history_list:
+                print(item)
 
             
         print("Result:", result)
