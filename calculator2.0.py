@@ -12,7 +12,7 @@ def calculator(num1,operator,num2):
         
     elif operator=="/":
         if num2==0:
-            return "Can not perform zero division!"
+            return "Cannot perform zero division!"
         else:
             result=num1/num2
 
@@ -30,47 +30,51 @@ operations = {
 
 history_list=[]
 
-while True:
+def display_menu():
     print("\nCalculation Menu:")
     print("Option 1. Calculate")
     print("Option 2. View History")
     print("Option 3. Exit")
-    choice= input("Choose an option(1, 2 or 3):")
-
-    if choice=="1":
+    
+def get_number(message):
+    while True:
         try:
-            num1 = float(input("Enter first number: "))
+             number = float(input(message))
+             return number
+        
         except ValueError:
             print("Invalid! Please enter a number.")
-            continue
 
-        operator = input("Choose your operation(+,-,/,*): ")
-
-        try:
-            num2 = float(input("Enter second number: "))
-        except ValueError:
-            print("Invalid!Please enter a number.")
-            continue
-
-        result = calculator(num1, operator,num2)
+while True:
+    display_menu()
+    
+    choice = input("Choose an option(1, 2, or 3): ")
+    
+    if choice=="1":
+        num1 = get_number("Enter first number: ")
         
-        if isinstance(result, (int,float)):
+        operator = input ("Choose your operation(+, -, *, /): ")
+        
+        num2 = get_number("Enter second number: ")
+        
+        result = calculator(num1, operator, num2)
+        
+        if isinstance(result, (int, float)):
             with open("history.txt", "a") as file:
                 file.write(f"{num1} {operator} {num2} = {result}\n")
-                
+
             history_list.append(f"{num1} {operator} {num2} = {result}")
-            for item in history_list:
-                print(item)
 
-            
         print("Result:", result)
-
+        
     elif choice=="2":
         with open("history.txt", "r") as file:
             history = file.read()
+
             if history.strip():
                 print("Calculation History:")
                 print(history)
+                
             else:
                 print("History is empty")
                 
