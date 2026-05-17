@@ -1,26 +1,6 @@
-def calculator(num1,operator,num2):
-    result = None
-    
-    if operator=="+":
-        result=num1+num2
-        
-    elif operator=="-":
-        result=num1-num2
-        
-    elif operator=="*":
-        result=num1*num2
-        
-    elif operator=="/":
-        if num2==0:
-            return "Cannot perform zero division!"
-        else:
-            result=num1/num2
+from calculator import calculator
 
-    else:
-        return "Invalid operator!"
-
-    return result
-
+from utils import display_menu, get_number
 operations = {
     "+":"Addition",
     "-":"Subtraction",
@@ -29,21 +9,6 @@ operations = {
 }
 
 history_list=[]
-
-def display_menu():
-    print("\nCalculation Menu:")
-    print("Option 1. Calculate")
-    print("Option 2. View History")
-    print("Option 3. Exit")
-    
-def get_number(message):
-    while True:
-        try:
-             number = float(input(message))
-             return number
-        
-        except ValueError:
-            print("Invalid! Please enter a number.")
 
 while True:
     display_menu()
@@ -74,7 +39,7 @@ while True:
             if history.strip():
                 print("Calculation History:")
                 print(history)
-                
+
             else:
                 print("History is empty")
                 

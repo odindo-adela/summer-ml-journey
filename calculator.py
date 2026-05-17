@@ -1,26 +1,22 @@
-num1 = float(input("Enter the first number:"))
-num2 = float(input("Enter the second number:"))
+def calculator(num1,operator,num2):
+    result = None
+    
+    if operator=="+":
+        result=num1+num2
+        
+    elif operator=="-":
+        result=num1-num2
+        
+    elif operator=="*":
+        result=num1*num2
+        
+    elif operator=="/":
+        if num2==0:
+            return "Cannot perform zero division!"
+        else:
+            result=num1/num2
 
-operation = input("Enter operation:")
-result = None
-
-if operation == "+":
-    result = num1+num2
-
-elif operation == "-":
-    result = num1-num2
-
-elif operation == "*":
-    result = num1*num2
-
-elif operation == "/":
-    if num2==0:
-        print("Can not divide by zero")
     else:
-        result = num1/num2
+        return "Invalid operator!"
 
-else:
-    print("Invalid!Enter either: +, -, /, *")
-
-if result is not None:
-    print(f"Final results:{result}")
+    return result
