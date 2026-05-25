@@ -1,0 +1,2 @@
+Using more meaningful features lowered MAE.
+Goals_Per_Match improved prediction quality.
