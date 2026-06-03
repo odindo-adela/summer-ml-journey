@@ -21,7 +21,7 @@ model.fit(X_train, y_train)
 
 print("Intercept: ", model.intercept_)
 
-print("Coefficients: ")
+print("\nCoefficients: ")
 for feature, coefficient in zip(X.columns, model.coef_):
     print(f"{feature}: {coefficient}")
 
