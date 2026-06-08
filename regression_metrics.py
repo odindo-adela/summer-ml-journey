@@ -24,7 +24,7 @@ def evaluate_model(features):
     model = LinearRegression()
     model.fit(X_train, y_train)
 
-    predictions = 100
+    predictions = model.predict(X_test)
     
     mae = mean_absolute_error(y_test, predictions)
     mse = mean_squared_error(y_test, predictions)
