@@ -20,7 +20,7 @@ model.fit(X,y)
 
 joblib.dump(
     model,
-    "elite_player_model.pk1")
+    "elite_player_model.pkl")
 
 print("Model saved successfully!")
 
